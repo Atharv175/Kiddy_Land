@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiddy Land Courses</title>
+    <style>
+        /* CSS styles */
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5e5ff;
+        }
+        
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #a042f5;
+            margin-bottom: 30px;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .course-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fde6ff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        
+        .course-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #a042f5;
+        }
+        
+        .course-description {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .course-button {
+            padding: 10px 20px;
+            background-color: #ff8c42;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .course-button:hover {
+            background-color: #ff6d00;
+        }
+        
+        .course-image {
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Kiddy Land <br>Educational Courses</h1>
+        <div id="course-list"></div>
+    </div>
+
+    <script>
+        // JavaScript code
+        const courses = [{
+                title: "Mathematics",
+                description: "Learn the basics of mathematics in a fun and interactive way.",
+                buttonLink: "#",
+                imageUrl: "https://journalarjom.com/public/journals/51/homepageImage_en_US.jpg"
+            }, {
+                title: "Science",
+                description: "Discover the wonders of the world through exciting scientific experiments.",
+                buttonLink: "#",
+                imageUrl: "https://img.freepik.com/free-vector/colorful-science-education-background_23-2148490697.jpg?w=2000"
+            }, {
+                title: "Art and Crafts",
+                description: "Unleash your creativity with various art and craft activities.",
+                buttonLink: "#",
+                imageUrl: "https://images.immediate.co.uk/production/volatile/sites/32/2021/06/Easy-Craft-ideas-for-kids-d6c8148.jpg?quality=90&resize=980,654"
+            }
+            // Add more courses here...
+        ];
+
+        const courseListElement = document.getElementById("course-list");
+
+        courses.forEach((course, index) => {
+            const courseCard = document.createElement("div");
+            courseCard.classList.add("course-card");
+
+            const courseTitle = document.createElement("h2");
+            courseTitle.classList.add("course-title");
+            courseTitle.textContent = course.title;
+
+            const courseDescription = document.createElement("p");
+            courseDescription.classList.add("course-description");
+            courseDescription.textContent = course.description;
+
+            const courseImage = document.createElement("img");
+            courseImage.classList.add("course-image");
+            courseImage.src = course.imageUrl;
+            courseImage.alt = course.title;
+
+            const courseButton = document.createElement("a");
+            courseButton.classList.add("course-button");
+            courseButton.href = "#";
+            courseButton.textContent = "Enroll Now";
+
+            courseButton.addEventListener("click", () => {
+                enrollCourse(index);
+            });
+
+            courseCard.appendChild(courseTitle);
+            courseCard.appendChild(courseDescription);
+            courseCard.appendChild(courseImage);
+            courseCard.appendChild(courseButton);
+            courseListElement.appendChild(courseCard);
+        });
+
+        function enrollCourse(index) {
+            const enrolledCourse = courses[index];
+            const enrolledCourses = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
+            enrolledCourses.push(enrolledCourse);
+            localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
+            alert("You have successfully enrolled in the course: " + enrolledCourse.title);
+        }
+    </script>
+</body>
+
+</html>

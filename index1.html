@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiddy Land Extracurricular Activities</title>
+    <style>
+        /* CSS styles */
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5e5ff;
+        }
+        
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #42a5f5;
+            margin-bottom: 30px;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .activity-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fde6ff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        
+        .activity-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .activity-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #42a5f5;
+        }
+        
+        .activity-description {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .activity-button {
+            padding: 10px 20px;
+            background-color: #ff8c42;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .activity-button:hover {
+            background-color: #ff6d00;
+        }
+        
+        .activity-image {
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Kiddy Land <br>Extracurricular Activities</h1>
+        <div id="activity-list"></div>
+    </div>
+
+    <script>
+        // JavaScript code
+        const activities = [{
+                title: "Dance",
+                description: "Learn various dance styles and express yourself through movement.",
+                buttonLink: "#",
+                imageUrl: "https://st2.depositphotos.com/1046535/7937/i/450/depositphotos_79379116-stock-photo-kids-train-zumba-fitness-in.jpg"
+            }, {
+                title: "Music",
+                description: "Discover the joy of music with instrument lessons and vocal training.",
+                buttonLink: "#",
+                imageUrl: "https://cdn.firstcry.com/education/2022/05/15171057/447165223.jpg"
+            }, {
+                title: "Sports",
+                description: "Develop physical skills and teamwork through exciting sports activities.",
+                buttonLink: "#",
+                imageUrl: "https://www.brainbalancecenters.com/hubfs/top-sports-kids-motor-issues.jpeg"
+            }
+            // Add more activities here...
+        ];
+
+        const activityListElement = document.getElementById("activity-list");
+
+        activities.forEach(activity => {
+            const activityCard = document.createElement("div");
+            activityCard.classList.add("activity-card");
+
+            const activityTitle = document.createElement("h2");
+            activityTitle.classList.add("activity-title");
+            activityTitle.textContent = activity.title;
+
+            const activityDescription = document.createElement("p");
+            activityDescription.classList.add("activity-description");
+            activityDescription.textContent = activity.description;
+
+            const activityImage = document.createElement("img");
+            activityImage.classList.add("activity-image");
+            activityImage.src = activity.imageUrl;
+            activityImage.alt = activity.title;
+
+            const activityButton = document.createElement("a");
+            activityButton.classList.add("activity-button");
+            activityButton.href = activity.buttonLink;
+            activityButton.textContent = "Enroll Now";
+
+            activityCard.appendChild(activityTitle);
+            activityCard.appendChild(activityDescription);
+            activityCard.appendChild(activityImage);
+            activityCard.appendChild(activityButton);
+            activityListElement.appendChild(activityCard);
+        });
+    </script>
+</body>
+
+</html>
